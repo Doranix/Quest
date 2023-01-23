@@ -1,74 +1,76 @@
-import os
 from os import system
 import time
+
 from data import *
 
 chose = "none"
 linux = "clear"
 win = "cls"
-
+clear = None
 start = False
 print("Перед началом игры, укажи Свою Операционную систему")
-sys = input("1)Windows 2)Linux \n:")
-if sys == "1" or sys == "windows" or sys == "Windows":
+sys = input("1)Windows 2)Linux \n:").lower()
+if sys == "1" or sys == "windows":
     clear = win
-elif sys == "2" or sys == "linux" or sys == "Linux":
+elif sys == "2" or sys == "linux":
     clear = linux
+
 
 def game_skip():
     print("----")
     input()
-    os.system(clear)
+    system(clear)
+
 
 print("Желаешь начать игру ?")
 game = input("1)Да 2)Нет \n:")
 if game == "1" or game == "да" or game == "Да":
     start = True
     print("----")
-    os.system(clear)
+    system(clear)
 else:
     start = False
-if start == True:
+if start:
     while True:
         print("Выбери имя персонажа!")
         player.name = input(":")
         print("----")
-        os.system(clear)
-        print("Ты выбрал имя " + '"' + player.name + '"')
+        system(clear)
+        print(f"Ты выбрал имя \"{player.name}\"")
         while True:
             print("Оставишь это имя или все таки сменишь ?")
             try:
                 chose = int(input("1)Оставлю, 2)Поменяю \n:"))
             except:
-                print("Нужно ввести цыфру!")
+                print("Нужно ввести цифру!")
                 game_skip()
                 continue
             finally:
                 if chose == 1:
                     print("----")
-                    os.system(clear)
+                    system(clear)
                     cont = False
                     break
                 elif chose == 2:
                     print("----")
-                    os.system(clear)
+                    system(clear)
                     cont = True
                     break
-        if cont == False:
+        if cont is False:
             del cont
             break
-        elif cont == True:
+        elif cont:
             continue
-    print("И так, ты остановился на имени " + '"' + player.name + '"')
+    print(f"И так, ты остановился на имени \n{player.name}\n")
     game_skip()
     print("Начнём игру!")
     time.sleep(0.5)
-    os.system(clear)
+    system(clear)
     print("Ты встал с кровати , проверил часы")
     time.sleep(0.5)
     print("Ты --> [ Так, чуть не проспал ]")
     game_skip()
-    print("Ты оделся и пошол на кухню в надежде на то что мама чтото приготовила.")
+    print("Ты оделся и пошёл на кухню в надежде на то что мама что-то приготовила.")
     game_skip()
     print("На кухне ты увидел маму.")
     game_skip()
@@ -76,11 +78,13 @@ if start == True:
     game_skip()
     print("Ты был рад этому.")
     game_skip()
-    print("Мама --> [" + player.name + ", хорошо что ты встал , мне как раз нужна помощь, иди собак покорми пожалуйста, и еще в магазин сходи за продуктами ]")
+    print(
+        "Мама --> [" + player.name + ", хорошо что ты встал , мне как раз нужна помощь, иди собак покорми пожалуйста, "
+                                     "и еще в магазин сходи за продуктами ]")
     game_skip()
     print("Ты --> [ Хорошо, мам! ]")
     game_skip()
-    print("Ты пошол за собачьими мисками.")
+    print("Ты пошёл за собачьими мисками.")
     game_skip()
     print("Принёс их в дом и отсыпал в них еды для псов.")
     game_skip()
@@ -97,7 +101,7 @@ if start == True:
     player.money += 100
     print("Баланс : " + str(player.money) + " грн")
     game_skip()
-    print("Ты --> [ Хорошо! Я пошол! ]")
+    print("Ты --> [ Хорошо! Я пошёл! ]")
     game_skip()
     print("Ты отправился в магазин.")
     game_skip()
@@ -111,7 +115,7 @@ if start == True:
         try:
             chose = int(input(":"))
         except:
-            print("Введи цыфру!")
+            print("Введи цифру!")
             time.sleep(0.5)
             continue
         finally:
@@ -148,10 +152,10 @@ if start == True:
         if player.money >= 155:
             print("Вам хватает денег на продукты")
             time.sleep(0.5)
-            print("Ты(в уме) --> [ Блин - еслиб я не подобрал те 100 гривен что я нашел, мне бы не хватило ]")
+            print("Ты(в уме) --> [ Блин - если б я не подобрал те 100 гривен что я нашел, мне бы не хватило ]")
             game_skip()
             print("Баланс : " + str(player.money) + " грн")
-            print("Ты расплачиваешся за продукты.")
+            print("Ты расплачиваешься за продукты.")
             player.money -= 155
             time.sleep(0.5)
             print("< < < Отдано 155 грн > > >")
@@ -171,7 +175,7 @@ if start == True:
                 try:
                     chose = int(input(":"))
                 except:
-                    print("Введите цыфру!")
+                    print("Введите цифру!")
                     continue
                 finally:
                     if chose == 1:
@@ -186,7 +190,9 @@ if start == True:
                         game_skip()
                         print("Вы ушли домой с продуктами")
                         game_skip()
-                        print("Идя домой вы заметили, что тех денег которые вы нашли по дороге в магазин, уже нету\n, кто-то уже забрал их")
+                        print(
+                            "Идя домой вы заметили, что тех денег которые вы нашли по дороге в магазин, уже нету\n, "
+                            "кто-то уже забрал их")
                         cont = 2
                         break
                     elif chose == 2:
@@ -194,14 +200,16 @@ if start == True:
                         time.sleep(1)
                         print("Вы ушли думой без продуктов")
                         game_skip()
-                        print("Идя домой вы заметили, что тех денег которые вы нашли по дороге в магазин, уже нету\n, кто-то уже забрал их")
+                        print(
+                            "Идя домой вы заметили, что тех денег которые вы нашли по дороге в магазин, уже нету\n, "
+                            "кто-то уже забрал их")
                         cont = 3
                         break
                     elif chose < 1 or chose > 2:
-                        print("Выберите цыфру 1 или 2")
+                        print("Выберите цифру 1 или 2")
                         continue
             break
-    print("Ты пришол домой")
+    print("Ты пришёл домой")
     game_skip()
     while True:
         if cont == 1:
@@ -216,7 +224,8 @@ if start == True:
             print("Мама --> [ Да? " + player.name + " Ты купил то, что я просила?")
             game_skip()
             print("Баланс : " + str(player.money) + " грн")
-            print("Ты --> [ Да, я купил. Но тех денег что ты дала не хватило , поэтому я взял в долг те продукты , на которых не хватило денег ]")
+            print("Ты --> [ Да, я купил. Но тех денег что ты дала не хватило , поэтому я взял в долг те продукты , "
+                  "на которых не хватило денег ]")
             game_skip()
             print("Баланс : " + str(player.money) + " грн")
             print("Мама --> [ Охх, ладно, на 55 грн, пойди донеси]")
